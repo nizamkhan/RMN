@@ -37,9 +37,6 @@ dependencies {
     implementation 'com.google.android.gms:play-services-wallet:18.1.2'
     implementation 'com.googlecode.mp4parser:isoparser:1.0.6'
     implementation 'com.stripe:stripe-android:2.0.2'
-
-    implementation 'com.google.android.gms:play-services-ads:19.0.0'
-
     implementation files('libs/libgsaverification-client.aar')
 
     coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.1.5'
@@ -50,7 +47,7 @@ android {
     buildToolsVersion '30.0.3'
     ndkVersion "21.1.6352462"
 
-    defaultConfig.applicationId = "my.rmn.app"
+    defaultConfig.applicationId = "org.telegram.messenger"
 
     sourceSets.main.jniLibs.srcDirs = ['./jni/']
 
@@ -114,11 +111,9 @@ android {
             minifyEnabled true
             multiDexEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-
             packagingOptions {
                 doNotStrip "**.so"
             }
-
             sourceSets {
                 main {
                     jniLibs {
@@ -307,7 +302,7 @@ android {
 
     applicationVariants.all { variant ->
         variant.outputs.all { output ->
-            outputFileName = "RMN.apk"
+            outputFileName = "app.apk"
             output.versionCodeOverride = defaultConfig.versionCode * 10 + variant.productFlavors.get(0).abiVersionCode
         }
     }
